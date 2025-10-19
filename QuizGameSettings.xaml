@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlaylistAudiometrics.QuizGameSettings"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             Title="QuizGameSettings"
+             BackgroundColor="#000000">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="30">
+
+            <Label Text="⚙️ Quiz Settings"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="#FFFFFF"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,25" />
+
+            <Frame CornerRadius="20" Padding="20" BackgroundColor="#101010" HasShadow="True" BorderColor="#2E2E2E">
+                <HorizontalStackLayout Spacing="20" VerticalOptions="Center">
+                    <Label Text="🧩 Question Count" FontSize="18" TextColor="White" VerticalOptions="Center" />
+                    <Picker x:Name="QuestionCountPicker" WidthRequest="120" SelectedIndex="0" TextColor="White">
+                        <Picker.Items>
+                            <x:String>5</x:String>
+                            <x:String>10</x:String>
+                            <x:String>15</x:String>
+                            <x:String>20</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="20" Padding="20" BackgroundColor="#101010" HasShadow="True" BorderColor="#2E2E2E">
+                <HorizontalStackLayout Spacing="20" VerticalOptions="Center">
+                    <Label Text="⏱ Guess Time (sec)" FontSize="18" TextColor="White" VerticalOptions="Center" />
+                    <Picker x:Name="GuessTimePicker" WidthRequest="120" SelectedIndex="0" TextColor="White">
+                        <Picker.Items>
+                            <x:String>10</x:String>
+                            <x:String>15</x:String>
+                            <x:String>20</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="20" Padding="20" BackgroundColor="#101010" HasShadow="True" BorderColor="#2E2E2E">
+                <HorizontalStackLayout Spacing="20" VerticalOptions="Center">
+                    <Label Text="🎯 Option Count" FontSize="18" TextColor="White" VerticalOptions="Center" />
+                    <Picker x:Name="OptionCountPicker" WidthRequest="120" SelectedIndex="1" TextColor="White">
+                        <Picker.Items>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="25" Padding="3" HasShadow="True" HeightRequest="60">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#3E8EDE" Offset="0.0"/>
+                        <GradientStop Color="#E05C5C" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Frame.Background>
+
+                <Button x:Name="StartButton"
+                        Text="START GAME"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        CornerRadius="25"
+                        HeightRequest="60"
+                        HorizontalOptions="FillAndExpand"
+                        Pressed="StartButton_Pressed"
+                        Released="StartButton_Released"
+                        Clicked="OnStartGameClicked" />
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

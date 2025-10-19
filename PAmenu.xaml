@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlaylistAudiometrics.PAmenu"
+             Title="Playlist Menu"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#f5f7fa">
+
+    <Grid>
+    
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                    <Label Text="Main Menu"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="#222" />
+
+                    <Button Text="Return Home" x:Name="btnReturnHome" Clicked="btnReturnHome_Clicked" />
+
+                </VerticalStackLayout>
+
+                <Frame CornerRadius="12"
+                       Padding="15"
+                       BackgroundColor="White"
+                       HasShadow="True"
+                       HeightRequest="800">
+                    <ScrollView>
+                        <VerticalStackLayout Spacing="15">
+
+                            <VerticalStackLayout Spacing="6" Padding="0,0,0,15">
+                                <Label x:Name="lblPlaylistName"
+                                       Text="Playlist Name"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#223366"
+                                       HorizontalOptions="Center" />
+                                <Label x:Name="lblPlaylistDescription"
+                                       Text="Playlist description goes here..."
+                                       FontSize="14"
+                                       TextColor="#666"
+                                       HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+
+                            <CollectionView x:Name="cvTracks" ItemsLayout="VerticalList">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10"
+                                               Padding="10"
+                                               Margin="0,0,0,10"
+                                               BackgroundColor="#fafafa"
+                                               BorderColor="#eee"
+                                               HasShadow="False">
+                                            <Grid ColumnDefinitions="60,*" ColumnSpacing="15">
+                                                <Image Grid.Column="0"
+                                                       Source="{Binding ImageUrl}"
+                                                       WidthRequest="60"
+                                                       HeightRequest="60"
+                                                       Aspect="AspectFill"
+                                                       VerticalOptions="Start">
+                                                    <Image.Clip>
+                                                        <RoundRectangleGeometry CornerRadius="8"
+                                                                                Rect="0,0,60,60"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                
+                                                <VerticalStackLayout Grid.Column="1" 
+                                                                     Spacing="2"
+                                                                     VerticalOptions="Center">
+                                                    <Label Text="{Binding TrackName}"
+                                                           FontSize="16"
+                                                           FontAttributes="Bold"
+                                                           TextColor="#222"
+                                                           LineBreakMode="WordWrap"
+                                                           MaxLines="3" />
+                                                    <Label Text="{Binding AlbumName}"
+                                                           FontSize="14"
+                                                           TextColor="#555"
+                                                           LineBreakMode="WordWrap"
+                                                           MaxLines="2" />
+                                                    <Label Text="{Binding ArtistName}"
+                                                           FontSize="13"
+                                                           TextColor="#777"
+                                                           LineBreakMode="WordWrap"
+                                                           MaxLines="1" />
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </VerticalStackLayout>
+                    </ScrollView>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid x:Name="loadingOverlay"
+              IsVisible="False"
+              BackgroundColor="#80000000"   
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+
+            <Frame CornerRadius="12"
+                   Padding="18"
+                   WidthRequest="320"
+                   HasShadow="True"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   BackgroundColor="White">
+                <VerticalStackLayout Spacing="12" HorizontalOptions="FillAndExpand">
+                    <ActivityIndicator x:Name="aiLoading" IsRunning="True" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" Color="Black" />
+                    <Label Text="Yükleniyor..." FontAttributes="Bold" HorizontalOptions="Center" TextColor="Black" />
+                    <ProgressBar x:Name="pbLoading" Progress="0" HeightRequest="6" HorizontalOptions="FillAndExpand" BackgroundColor="Gray" />
+                    <Label x:Name="lblProgressPercent" Text="0%" HorizontalOptions="Center" TextColor="Black" />
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PlaylistAudiometrics.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PlaylistAudiometrics"
+    Title="PlaylistAudiometrics">
+
+    <TabBar>
+        <ShellContent Title="Info"
+                  x:Name="btnInfo"
+                  Icon="dotnet_bot.png"
+                  ContentTemplate="{DataTemplate local:PAinfo}"
+                  Route="PAinfo" />
+
+        <ShellContent Title="Game"
+                  x:Name="btnGame"
+                  Icon="dotnet_bot.png"
+                  ContentTemplate="{DataTemplate local:PAquiz}"
+                  Route="PAquiz" />
+
+        <ShellContent Title="Menü"
+                  x:Name="btnMenu"
+                  Icon="dotnet_bot.png"
+                  ContentTemplate="{DataTemplate local:PAmenu}"
+                  Route="PAmenu" />
+
+        <ShellContent Title="Analyze"
+                  x:Name="btnAnalyze"
+                  Icon="dotnet_bot.png"
+                  ContentTemplate="{DataTemplate local:PAanalyze}"
+                  Route="PAanalyze" />
+
+        <ShellContent Title="Leaderboard"
+                  x:Name="btnLeaderboard"
+                  Icon="dotnet_bot.png"
+                  ContentTemplate="{DataTemplate local:PAleaderboard}"
+                  Route="PAleaderboard" />
+
+    </TabBar>
+
+</Shell>

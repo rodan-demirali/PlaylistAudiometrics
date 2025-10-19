@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlaylistAudiometrics.PAanalyze"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             Title="PAanalyze"
+             BackgroundColor="#0a0a0a">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <Frame BackgroundColor="#1a1a1a" 
+                   CornerRadius="15" 
+                   Padding="20"
+                   HasShadow="False"
+                   BorderColor="#2a2a2a">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Playlist Analysis"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="#1DB954"
+                           HorizontalOptions="Center" />
+                    <Label Text="Get AI-powered insights about your playlist"
+                           FontSize="13"
+                           TextColor="#b3b3b3"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="#1a1a1a" 
+                   CornerRadius="12" 
+                   Padding="15"
+                   HasShadow="False"
+                   BorderColor="#2a2a2a">
+                <VerticalStackLayout Spacing="8">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text=""
+                               FontSize="16"
+                               VerticalOptions="Center" />
+                        <Label x:Name="lblDailyLimit"
+                               Text="Daily analyses remaining: 3/3"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#b3b3b3"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <ProgressBar x:Name="progressBar"
+                                 Progress="1.0"
+                                 ProgressColor="#1DB954"
+                                 HeightRequest="6"
+                                 Margin="0,5,0,0" />
+
+                    <Label x:Name="lblResetTime"
+                           Text="Resets in: 0h 0m"
+                           FontSize="11"
+                           HorizontalOptions="Center"
+                           TextColor="#ff6b6b"
+                           IsVisible="False"
+                           Margin="0,5,0,0" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Spacing="12">
+                <Label Text="Choose Your AI Assistant"
+                       FontSize="15"
+                       FontAttributes="Bold"
+                       TextColor="#ffffff"
+                       Margin="0,0,0,5" />
+
+                <Frame BackgroundColor="#1DB954" 
+                       CornerRadius="12" 
+                       Padding="0"
+                       HasShadow="True">
+                    <Button x:Name="btnAnalyzeGemini"
+                            Text="Analyze with Gemini"
+                            Clicked="btnAnalyzeGemini_Clicked"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            HeightRequest="55" />
+                </Frame>
+
+                <Frame BackgroundColor="#2a2a2a" 
+                       CornerRadius="12" 
+                       Padding="0"
+                       HasShadow="False"
+                       BorderColor="#3a3a3a">
+                    <Button Text="Analyze with ChatGPT"
+                            BackgroundColor="Transparent"
+                            TextColor="#b3b3b3"
+                            FontSize="16"
+                            HeightRequest="55"
+                            IsEnabled="False" />
+                </Frame>
+
+                <Frame BackgroundColor="#2a2a2a" 
+                       CornerRadius="12" 
+                       Padding="0"
+                       HasShadow="False"
+                       BorderColor="#3a3a3a">
+                    <Button Text="Analyze with Grok"
+                            BackgroundColor="Transparent"
+                            TextColor="#b3b3b3"
+                            FontSize="16"
+                            HeightRequest="55"
+                            IsEnabled="False" />
+                </Frame>
+
+                <Label Text="Coming soon: ChatGPT and Grok integration"
+                       FontSize="11"
+                       TextColor="#666666"
+                       HorizontalOptions="Center"
+                       Margin="0,5,0,0" />
+            </VerticalStackLayout>
+
+            <Frame x:Name="resultsFrame"
+                   BackgroundColor="#1a1a1a" 
+                   CornerRadius="15" 
+                   Padding="20"
+                   HasShadow="False"
+                   BorderColor="#2a2a2a"
+                   IsVisible="False">
+                <VerticalStackLayout Spacing="15">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="✨"
+                               FontSize="20"
+                               VerticalOptions="Center" />
+                        <Label x:Name="lblResultHeading"
+                               Text="Gemini's Playlist Analysis"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#1DB954"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <BoxView x:Name="HorizLine" 
+                             HeightRequest="1" 
+                             Color="#2a2a2a" 
+                             Margin="0,5" />
+
+                    <ScrollView x:Name="svAnalyze" MaximumHeightRequest="400">
+                        <Label x:Name="lblAnalyzeResult"
+                               Text="Your analysis will appear here..."
+                               LineBreakMode="WordWrap"
+                               TextColor="#e0e0e0"
+                               FontSize="14"
+                               LineHeight="1.5" />
+                    </ScrollView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="loadingLayout"
+                   IsVisible="False"
+                   BackgroundColor="#1a1a1a"
+                   CornerRadius="15"
+                   Padding="30"
+                   HasShadow="True"
+                   BorderColor="#2a2a2a">
+                <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
+                    <ActivityIndicator IsRunning="True"
+                                       Color="#1DB954"
+                                       WidthRequest="60"
+                                       HeightRequest="60" />
+
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="🎵 Analyzing Your Playlist"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               TextColor="#ffffff" />
+                        <Label Text="Gemini is generating personalized insights..."
+                               FontSize="13"
+                               HorizontalOptions="Center"
+                               TextColor="#b3b3b3" />
+                    </VerticalStackLayout>
+
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <BoxView WidthRequest="8" 
+                                 HeightRequest="8" 
+                                 CornerRadius="4" 
+                                 Color="#1DB954" />
+                        <BoxView WidthRequest="8" 
+                                 HeightRequest="8" 
+                                 CornerRadius="4" 
+                                 Color="#1DB954" 
+                                 Opacity="0.6" />
+                        <BoxView WidthRequest="8" 
+                                 HeightRequest="8" 
+                                 CornerRadius="4" 
+                                 Color="#1DB954" 
+                                 Opacity="0.3" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

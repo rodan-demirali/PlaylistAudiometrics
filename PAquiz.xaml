@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlaylistAudiometrics.PAquiz"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             Title="PAquiz"
+             BackgroundColor="#121212">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="30">
+
+            <Label Text="Choose a Game"
+                   FontSize="28"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   Margin="0,10,0,20" />
+
+            <Frame CornerRadius="20"
+                   Padding="20"
+                   BackgroundColor="#1E1E1E"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🎵 Heardle"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label Text="Guess the song by hearing short clips — a musical Wordle!"
+                           FontSize="14"
+                           TextColor="#BBBBBB" />
+                    <Button Text="Play Heardle"
+                            BackgroundColor="#3E8EDE"
+                            TextColor="White"
+                            CornerRadius="12"
+                            FontAttributes="Bold"
+                            HeightRequest="45" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="20"
+                   Padding="20"
+                   BackgroundColor="#1E1E1E"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🧠 Quiz"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label Text="Test your playlist knowledge with quick 20-second song previews."
+                           FontSize="14"
+                           TextColor="#BBBBBB" />
+                    <Button Text="Play Quiz"
+                            x:Name="btnPlayQuiz"
+                            Clicked="btnPlayQuiz_Clicked"
+                            BackgroundColor="#E05C5C"
+                            TextColor="White"
+                            CornerRadius="12"
+                            FontAttributes="Bold"
+                            HeightRequest="45" />
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
